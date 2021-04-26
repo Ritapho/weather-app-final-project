@@ -1,0 +1,104 @@
+.weather-app-layout {
+  font-family: "Spartan", sans-serif;
+}
+
+.weather-app {
+  max-width: 700px;
+  min-width: 700px;
+  max-height: 615px;
+  margin: 50px auto 10px;
+  padding: 20px;
+  border-radius: 10px;
+  background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+ul {
+  list-style: none;
+}
+
+.app-head {
+  margin-bottom: 30px;
+}
+
+.chosen-city {
+  font-size: 40px;
+  position: relative;
+  left: 15px;
+}
+.chosen-city-date {
+  font-size: 15px;
+  position: relative;
+  left: 15px;
+}
+
+#scale {
+  font-size: 25px;
+  float: right;
+  position: relative;
+  bottom: 0px;
+  left: -10px;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.app-body {
+  height: 240px;
+}
+
+.current-conditions {
+  height: 100px;
+  position: relative;
+  top: 100px;
+  left: 15px;
+  font-size: 15px;
+}
+
+.current-main {
+  position: relative;
+  right: 10px;
+}
+.description {
+  font-size: 35px;
+  text-transform: capitalize;
+}
+
+.current-temperature {
+  height: 150px;
+  font-size: 130px;
+  text-align: center;
+}
+
+.current-amplitude {
+  height: 60px;
+  font-size: 18px;
+  position: relative;
+  right: 30px;
+  top: 125px;
+}
+
+.current-amplitude hr {
+  margin-top: 0;
+  margin-bottom: 10px;
+  width: 45px;
+}
+
+.app-forecast {
+  clear: both;
+  text-align: center;
+  font-size: 13px;
+  position: relative;
+  top: -20px;
+}
+
+.app-forecast hr {
+  margin: 10px;
+}
+.app-forecast i {
+  font-size: 25px;
+}
+
+.foot-note {
+  margin-left: 20px;
+  font-weight: bold;
+  font-size: 15px;
+}

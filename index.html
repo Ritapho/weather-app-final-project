@@ -1,228 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="SRC/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/cd6a83d8ff.js" crossorigin="anonymous"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="SRC/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spartan:wght@300&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/cd6a83d8ff.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Weather App</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
+      <div class="weather-app-layout">
         <div class="weather-app">
-            <form id="app-search-engine">
-                <div class="row">
-                    <div class="col-5">
-                        <input type="search" id="input-city" placeholder="Type a City..." class="form-control">
-                    </div>
-                    <div class="col-2">
-                        <input type="submit" value="Search" class="form-control">
-                    </div>
-                    <div class="col-2">
-                        <button class="btn btn-primary" id="current-location-button">Current</button>
-                    </div>
-                </div>
-            </form>
-            <hr>
-            <div class="row app-head">
-                <div class="col-10">
-                    <div class="chosen-city">
-                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                        <span class="chosen-city-value">Lisbon</span>
-                    </div>
-                    <div class="chosen-city-date">Monday, April 26, 13:28</div>
-                </div>
-                <div class="col-2">
-                    <a href="#" id="scale">ºF</a>
-                </div>
+          <form id="app-search-engine">
+            <div class="row">
+              <div class="col-5">
+                <input
+                  type="search"
+                  id="input-city"
+                  placeholder="Type a City..."
+                  class="form-control"
+                />
+              </div>
+              <div class="col-2">
+                <input type="submit" value="Search" class="form-control" />
+              </div>
+              <div class="col-2">
+                <button class="btn btn-primary" id="current-location-button">
+                  Current
+                </button>
+              </div>
             </div>
-            <div class="row app-body">
-                <div class="col-5 current-conditions">
-                    <ul>
-                        <li>Humidity: <span id="humidity">64</span>%</li>
-                        <li>Clouds: <span id="clouds">40</span>%</li>
-                        <li>Wind Speed: <span id="windspeed">4</span> km/h</li>
-                        <li>Pressure:<span id="pressure">1006</span>hPa</li>
-                    </ul>
-                </div>
-                <div class="col-6 current-main">
-                    <div class="description-ilustration">
-                        <i class="fas fa-sun description-icon" aria-hidden="true"></i>
-                        <span id="description-value">Clouds</span>
-                    </div>
-                    <div class="temperature">
-                        <span id="temperature-value">20</span>
-                        <span class="temperature-scale">º</span>
-                    </div>
-                </div>
-                <div class="col-1 current-amplitude">
-                    <ul>
-                        <li class="min-temp">
-                            <span id="temperature-value">17</span>
-                            <span id="temperature-scale">ºC</span>
-                        </li>
-                        <hr>
-                        <li class="max-temp">
-                            <span id="temperature-value">21</span><span
-                                id="temperature-scale">ºC</span>
-                        </li>
-                    </ul>
-                </div>
+          </form>
+          <hr />
+          <div class="row app-head">
+            <div class="col-10">
+              <div class="chosen-city">
+                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                <span class="chosen-city-value">Lisbon</span>
+              </div>
+              <div class="chosen-city-date">Monday, April 26, 13:28</div>
             </div>
-            <div class="app-week-forecast">
-                <hr>
-                <div class="row hour-forecast">
-                    <div class="col now-hour">
-                        <div class="hour">NOW</div>
-                        <i class="fas fa-sun" aria-hidden="true"></i>
-                        <div class="temperature">
-                            <span id="temperature-value">20</span>º
-                        </div>
-                    </div>
-                    <div class="col now-hour+1">
-                        <div class="hour">09:00</div>
-                        <i class="fas fa-sun" aria-hidden="true"></i>
-                        <div class="temperature">
-                            <span id="temperature-value">20</span>º
-                        </div>
-                    </div>
-                    <div class="col now-hour+2">
-                        <div class="hour">10:00</div>
-                        <i class="fas fa-sun" aria-hidden="true"></i>
-                        <div class="temperature">
-                            <span id="temperature-value">20</span>º
-                        </div>
-                    </div>
-                    <div class="col now-hour+3">
-                        <div class="hour">11:00</div>
-                        <i class="fas fa-sun" aria-hidden="true"></i>
-                        <div class="temperature">
-                            <span id="temperature-value">20</span>º
-                        </div>
-                    </div>
-                    <div class="col now-hour+4">
-                        <div class="hour">12:00</div>
-                        <i class="fas fa-sun" aria-hidden="true"></i>
-                        <div class="temperature">
-                            <span id="temperature-value">20</span>º
-                        </div>
-                    </div>
-                    <div class="col now-hour+5">
-                        <div class="hour">13:00</div>
-                        <i class="fas fa-sun" aria-hidden="true"></i>
-                        <div class="temperature">
-                            <span id="temperature-value">20</span>º
-                        </div>
-                    </div>
-                    <div class="col now-hour+6">
-                        <div class="hour">14:00</div>
-                        <i class="fas fa-sun" aria-hidden="true"></i>
-                        <div class="temperature">
-                            <span id="temperature-value">20</span>º
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="row week-forecast">
-                    <div class="col now-day">
-                        <div class="day">MON</div>
-                        <i class="fas fa-sun" aria-hidden="true"></i>
-                        <div class="day-amp"></div>
-                        <div class="day-amplitude">
-                            <span class="min-temp">
-                                <span id="temperature-value">17</span>ºC
-                            </span>
-                            <span class="max-temp">
-                                <span id="temperature-value">17</span>ºC
-                            </span>
-                        </div>
-                    </div>
-                    <div class="col now-day+1">
-                        <div class="day">TUE</div>
-                        <i class="fas fa-sun" aria-hidden="true"></i>
-                        <div class="day-amp"></div>
-                        <div class="day-amplitude">
-                            <span class="min-temp">
-                                <span id="temperature-value">17</span>ºC
-                            </span>
-                            <span class="max-temp">
-                                <span id="temperature-value">17</span>ºC
-                            </span>
-                        </div>
-                    </div>
-                    <div class="col now-day+2">
-                        <div class="day">WED</div>
-                        <i class="fas fa-sun" aria-hidden="true"></i>
-                        <div class="day-amp"></div>
-                        <div class="day-amplitude">
-                            <span class="min-temp">
-                                <span id="temperature-value">17</span>ºC
-                            </span>
-                            <span class="max-temp">
-                                <span id="temperature-value">17</span>ºC
-                            </span>
-                        </div>
-                    </div>
-                    <div class="col now-day+3">
-                        <div class="day">THU</div>
-                        <i class="fas fa-sun" aria-hidden="true"></i>
-                        <div class="day-amp"></div>
-                        <div class="day-amplitude">
-                            <span class="min-temp">
-                                <span id="temperature-value">17</span>ºC
-                            </span>
-                            <span class="max-temp">
-                                <span id="temperature-value">17</span>ºC
-                            </span>
-                        </div>
-                    </div>
-                    <div class="col now-day+4">
-                        <div class="day">FRI</div>
-                        <i class="fas fa-sun" aria-hidden="true"></i>
-                        <div class="day-amp"></div>
-                        <div class="day-amplitude">
-                            <span class="min-temp">
-                                <span id="temperature-value">17</span>ºC
-                            </span>
-                            <span class="max-temp">
-                                <span id="temperature-value">17</span>ºC
-                            </span>
-                        </div>
-                    </div>
-                    <div class="col now-day+5">
-                        <div class="day">SAT</div>
-                        <i class="fas fa-sun" aria-hidden="true"></i>
-                        <div class="day-amp"></div>
-                        <div class="day-amplitude">
-                            <span class="min-temp">
-                                <span id="temperature-value">17</span>ºC
-                            </span>
-                            <span class="max-temp">
-                                <span id="temperature-value">17</span>ºC
-                            </span>
-                        </div>
-                    </div>
-                    <div class="col now-day+6">
-                        <div class="day">SUN</div>
-                        <i class="fas fa-sun" aria-hidden="true"></i>
-                        <div class="day-amp"></div>
-                        <div class="day-amplitude">
-                            <span class="min-temp">
-                                <span id="temperature-value">17</span>ºC
-                            </span>
-                            <span class="max-temp">
-                                <span id="temperature-value">17</span>ºC
-                            </span>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-2">
+              <a href="#" id="scale">ºF</a>
             </div>
-
+          </div>
+          <div class="row app-body">
+            <div class="col-5 current-conditions">
+              <ul>
+                <li>Humidity: <span id="humidity">64</span>%</li>
+                <li>Clouds: <span id="clouds">40</span>%</li>
+                <li>Wind Speed: <span id="windspeed">4</span> km/h</li>
+                <li>Pressure:<span id="pressure">1006</span>hPa</li>
+              </ul>
+            </div>
+            <div class="col-5 current-main">
+              <div class="description">
+                <i class="fas fa-sun description-icon" aria-hidden="true"></i>
+                <span id="description-value">Clouds</span>
+              </div>
+              <div class="current-temperature">
+                <span id="temperature-value">25</span>º
+              </div>
+            </div>
+            <div class="col-2 current-amplitude">
+              <ul>
+                <li class="min-temp">
+                  <span id="temperature-value">17</span>
+                  <span id="temperature-scale">ºC</span>
+                </li>
+                <hr />
+                <li class="max-temp">
+                  <span id="temperature-value">21</span
+                  ><span id="temperature-scale">ºC</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="app-forecast">
+            <hr />
+            <div class="row hour-forecast">
+              <div class="col now-hour">
+                <div class="hour">NOW</div>
+                <i class="fas fa-sun" aria-hidden="true"></i>
+                <div class="temperature">
+                  <span id="temperature-value">20</span>º
+                </div>
+              </div>
+              <div class="col now-hour+1">
+                <div class="hour">09:00</div>
+                <i class="fas fa-sun" aria-hidden="true"></i>
+                <div class="temperature">
+                  <span id="temperature-value">20</span>º
+                </div>
+              </div>
+              <div class="col now-hour+2">
+                <div class="hour">10:00</div>
+                <i class="fas fa-sun" aria-hidden="true"></i>
+                <div class="temperature">
+                  <span id="temperature-value">20</span>º
+                </div>
+              </div>
+              <div class="col now-hour+3">
+                <div class="hour">11:00</div>
+                <i class="fas fa-sun" aria-hidden="true"></i>
+                <div class="temperature">
+                  <span id="temperature-value">20</span>º
+                </div>
+              </div>
+              <div class="col now-hour+4">
+                <div class="hour">12:00</div>
+                <i class="fas fa-sun" aria-hidden="true"></i>
+                <div class="temperature">
+                  <span id="temperature-value">20</span>º
+                </div>
+              </div>
+              <div class="col now-hour+5">
+                <div class="hour">13:00</div>
+                <i class="fas fa-sun" aria-hidden="true"></i>
+                <div class="temperature">
+                  <span id="temperature-value">20</span>º
+                </div>
+              </div>
+              <div class="col now-hour+6">
+                <div class="hour">14:00</div>
+                <i class="fas fa-sun" aria-hidden="true"></i>
+                <div class="temperature">
+                  <span id="temperature-value">20</span>º
+                </div>
+              </div>
+            </div>
+            <hr />
+            <div class="row week-forecast">
+              <div class="col now-day">
+                <div class="day">MON</div>
+                <i class="fas fa-sun" aria-hidden="true"></i>
+                <div class="day-amp"></div>
+                <div class="day-amplitude">
+                  <span class="min-temp">
+                    <span id="temperature-value">17</span>º
+                  </span>
+                  <span class="max-temp">
+                    <span id="temperature-value">17</span>º
+                  </span>
+                </div>
+              </div>
+              <div class="col now-day+1">
+                <div class="day">TUE</div>
+                <i class="fas fa-sun" aria-hidden="true"></i>
+                <div class="day-amp"></div>
+                <div class="day-amplitude">
+                  <span class="min-temp">
+                    <span id="temperature-value">17</span>º
+                  </span>
+                  <span class="max-temp">
+                    <span id="temperature-value">17</span>º
+                  </span>
+                </div>
+              </div>
+              <div class="col now-day+2">
+                <div class="day">WED</div>
+                <i class="fas fa-sun" aria-hidden="true"></i>
+                <div class="day-amp"></div>
+                <div class="day-amplitude">
+                  <span class="min-temp">
+                    <span id="temperature-value">17</span>º
+                  </span>
+                  <span class="max-temp">
+                    <span id="temperature-value">17</span>º
+                  </span>
+                </div>
+              </div>
+              <div class="col now-day+3">
+                <div class="day">THU</div>
+                <i class="fas fa-sun" aria-hidden="true"></i>
+                <div class="day-amp"></div>
+                <div class="day-amplitude">
+                  <span class="min-temp">
+                    <span id="temperature-value">17</span>º
+                  </span>
+                  <span class="max-temp">
+                    <span id="temperature-value">17</span>º
+                  </span>
+                </div>
+              </div>
+              <div class="col now-day+4">
+                <div class="day">FRI</div>
+                <i class="fas fa-sun" aria-hidden="true"></i>
+                <div class="day-amp"></div>
+                <div class="day-amplitude">
+                  <span class="min-temp">
+                    <span id="temperature-value">17</span>º
+                  </span>
+                  <span class="max-temp">
+                    <span id="temperature-value">17</span>º
+                  </span>
+                </div>
+              </div>
+              <div class="col now-day+5">
+                <div class="day">SAT</div>
+                <i class="fas fa-sun" aria-hidden="true"></i>
+                <div class="day-amp"></div>
+                <div class="day-amplitude">
+                  <span class="min-temp">
+                    <span id="temperature-value">17</span>º
+                  </span>
+                  <span class="max-temp">
+                    <span id="temperature-value">17</span>º
+                  </span>
+                </div>
+              </div>
+              <div class="col now-day+6">
+                <div class="day">SUN</div>
+                <i class="fas fa-sun" aria-hidden="true"></i>
+                <div class="day-amp"></div>
+                <div class="day-amplitude">
+                  <span class="min-temp">
+                    <span id="temperature-value">17</span>º
+                  </span>
+                  <span class="max-temp">
+                    <span id="temperature-value">17</span>º
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+        <div class="foot-note">
+          <a
+            href="https://github.com/Ritapho/weather-app-final-project"
+            target="_blank"
+            >Open-source code</a
+          >
+          by Rita Ho
+        </div>
+      </div>
     </div>
+
     <script src="SRC/app.js"></script>
-</body>
+  </body>
 </html>
