@@ -1,10 +1,10 @@
 .weather-app-layout {
   font-family: "Spartan", sans-serif;
+  max-width: 730px;
+  min-width: 730px;
 }
 
 .weather-app {
-  max-width: 700px;
-  min-width: 700px;
   max-height: 615px;
   margin: 50px auto 10px;
   padding: 20px;
@@ -16,16 +16,12 @@ ul {
   list-style: none;
 }
 
-.app-head {
-  margin-bottom: 30px;
-}
-
 .chosen-city {
   font-size: 40px;
   position: relative;
   left: 15px;
 }
-.chosen-city-date {
+.update {
   font-size: 15px;
   position: relative;
   left: 15px;
@@ -42,7 +38,7 @@ ul {
 }
 
 .app-body {
-  height: 240px;
+  height: 260px;
 }
 
 .current-conditions {
@@ -60,12 +56,22 @@ ul {
 .description {
   font-size: 35px;
   text-transform: capitalize;
+  white-space: nowrap;
+  text-align: center;
+}
+
+#description-value {
+  position: relative;
+  top: 5px;
+  right: 20px;
 }
 
 .current-temperature {
   height: 150px;
   font-size: 140px;
-  text-align: center;
+  text-align: right;
+  position: relative;
+  top: -30px;
 }
 
 .current-amplitude {
