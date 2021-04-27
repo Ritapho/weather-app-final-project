@@ -66,9 +66,18 @@ function showSearchConditions(response) {
     response.data.main.pressure
   );
 
-  document.querySelector(".chosen-city-date").innerHTML = formatDate(
+  document.querySelector("#update-value").innerHTML = formatDate(
     response.data.dt * 1000
   );
+  document
+    .querySelector("#icon")
+    .setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
+  document
+    .querySelector("#icon")
+    .setAttribute("alt", response.data.weather[0].description);
 }
 
 let apiKey = "ea67ab160a3ae4295e1811dfc7396fd1";
