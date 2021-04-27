@@ -20,6 +20,7 @@ ul {
   font-size: 40px;
   position: relative;
   left: 15px;
+  white-space: nowrap;
 }
 .update {
   font-size: 15px;
