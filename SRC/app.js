@@ -80,7 +80,16 @@ function showSearchConditions(response) {
     .setAttribute("alt", response.data.weather[0].description);
 }
 
-let apiKey = "ea67ab160a3ae4295e1811dfc7396fd1";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Madrid&appid=${apiKey}&units=metric`;
+function search(city) {
+  let apiKey = "ea67ab160a3ae4295e1811dfc7396fd1";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
-axios.get(apiUrl).then(showSearchConditions);
+  axios.get(apiUrl).then(showSearchConditions);
+}
+function handleSubmit(event) {
+  event.preventDefault();
+  search(document.querySelector("#input-city").value);
+}
+
+let searchForm = document.querySelector("#app-search-engine");
+searchForm.addEventListener("submit", handleSubmit);
