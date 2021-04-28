@@ -28,16 +28,6 @@ ul {
   left: 15px;
 }
 
-#scale {
-  font-size: 25px;
-  float: right;
-  position: relative;
-  bottom: 0px;
-  left: -10px;
-  text-decoration: none;
-  background-color: transparent;
-}
-
 .app-body {
   height: 260px;
 }
