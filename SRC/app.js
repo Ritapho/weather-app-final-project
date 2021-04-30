@@ -37,30 +37,43 @@ function formatDate(timestamp) {
   return `${weekday}, ${month} ${day}, ${hour}:${minute}`;
 }
 
-function displayForecast() {
+function formatWeekDay(timestamp) {
+  let weekDays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+  return weekDays[new Date(timestamp * 1000).getDay()];
+}
+
+function showForecastConditions(response) {
+  let weekForecast = response.data.daily;
+
   let forecastHTML = `<div class="row">`;
-  let days = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col">
-        <div class="day">${day}</div>
-        <img src="http://openweathermap.org/img/wn/50d@2x.png" alt="" width="40"/>
+  weekForecast.forEach(function (weekDay, index) {
+    if (index < 7) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col">
+        <div class="day">${formatWeekDay(weekDay.dt)}</div>
+        <img src="http://openweathermap.org/img/wn/${
+          weekDay.weather[0].icon
+        }@2x.png" alt="" width="40"/>
         <div class="day-amp"></div>
         <div class="day-amplitude">
-          <span class="min-temp">
-            <span id="temperature-value">17</span>º
-          </span>
-          <span class="max-temp">
-            <span id="temperature-value">17</span>º
-          </span>
+          <span class="min-temp-value">${Math.round(weekDay.temp.min)}º</span>
+          <span class="max-temp-value">${Math.round(weekDay.temp.max)}º</span>
         </div>
       </div>
   `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
   document.querySelector("#week-forecast").innerHTML = forecastHTML;
+}
+
+function searchForecastLocation(coordinates) {
+  let apiKey = "ea67ab160a3ae4295e1811dfc7396fd1";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude={part}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(showForecastConditions);
 }
 
 function showSearchConditions(response) {
@@ -104,6 +117,8 @@ function showSearchConditions(response) {
   document
     .querySelector("#icon")
     .setAttribute("alt", response.data.weather[0].description);
+
+  searchForecastLocation(response.data.coord);
 }
 
 function searchCity(city) {
@@ -136,4 +151,3 @@ let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", getCurrentLocation);
 
 searchCity("Lisbon");
-displayForecast();
