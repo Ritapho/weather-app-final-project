@@ -26,7 +26,7 @@ function formatDate(timestamp) {
   let day = date.getDate();
   let hour = date.getHours();
   if (hour < 10) {
-    hour = `0${hours}`;
+    hour = `0${hour}`;
   }
   let minute = date.getMinutes();
   if (minute < 10) {
@@ -42,20 +42,29 @@ function formatWeekDay(timestamp) {
   return weekDays[new Date(timestamp * 1000).getDay()];
 }
 
+function formatHour(timestamp) {
+  let hour = new Date(timestamp * 1000).getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+
+  return `${hour}:00`;
+}
+
 function showForecastConditions(response) {
   let weekForecast = response.data.daily;
+  let hourForecast = response.data.hourly;
 
-  let forecastHTML = `<div class="row">`;
+  let weekForecastHTML = `<div class="row">`;
   weekForecast.forEach(function (weekDay, index) {
     if (index < 7) {
-      forecastHTML =
-        forecastHTML +
+      weekForecastHTML =
+        weekForecastHTML +
         `<div class="col">
         <div class="day">${formatWeekDay(weekDay.dt)}</div>
         <img src="http://openweathermap.org/img/wn/${
           weekDay.weather[0].icon
         }@2x.png" alt="" width="40"/>
-        <div class="day-amp"></div>
         <div class="day-amplitude">
           <span class="min-temp-value">${Math.round(weekDay.temp.min)}º</span>
           <span class="max-temp-value">${Math.round(weekDay.temp.max)}º</span>
@@ -65,8 +74,30 @@ function showForecastConditions(response) {
     }
   });
 
-  forecastHTML = forecastHTML + `</div>`;
-  document.querySelector("#week-forecast").innerHTML = forecastHTML;
+  weekForecastHTML = weekForecastHTML + `</div>`;
+
+  let hourForecastHTML = `<div class="row">`;
+  hourForecast.forEach(function (hour, index) {
+    if (index < 7) {
+      hourForecastHTML =
+        hourForecastHTML +
+        `<div class="col">
+        <div class="day">${formatHour(hour.dt)}</div>
+        <img src="http://openweathermap.org/img/wn/${
+          hour.weather[0].icon
+        }@2x.png" alt="" width="40"/>
+        <div>
+          <span class="hour-temp-value">${Math.round(hour.temp)}º</span>
+        </div>
+      </div>
+  `;
+    }
+  });
+
+  hourForecastHTML = hourForecastHTML + `</div>`;
+
+  document.querySelector("#week-forecast").innerHTML = weekForecastHTML;
+  document.querySelector("#hour-forecast").innerHTML = hourForecastHTML;
 }
 
 function searchForecastLocation(coordinates) {
