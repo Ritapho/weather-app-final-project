@@ -37,6 +37,32 @@ function formatDate(timestamp) {
   return `${weekday}, ${month} ${day}, ${hour}:${minute}`;
 }
 
+function displayForecast() {
+  let forecastHTML = `<div class="row">`;
+  let days = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col">
+        <div class="day">${day}</div>
+        <img src="http://openweathermap.org/img/wn/50d@2x.png" alt="" width="40"/>
+        <div class="day-amp"></div>
+        <div class="day-amplitude">
+          <span class="min-temp">
+            <span id="temperature-value">17</span>º
+          </span>
+          <span class="max-temp">
+            <span id="temperature-value">17</span>º
+          </span>
+        </div>
+      </div>
+  `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  document.querySelector("#week-forecast").innerHTML = forecastHTML;
+}
+
 function showSearchConditions(response) {
   document.querySelector(".chosen-city-value").innerHTML = response.data.name;
   document.querySelector(
@@ -110,3 +136,4 @@ let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", getCurrentLocation);
 
 searchCity("Lisbon");
+displayForecast();
