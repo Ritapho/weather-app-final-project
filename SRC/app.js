@@ -73,7 +73,6 @@ function showForecastConditions(response) {
   `;
     }
   });
-
   weekForecastHTML = weekForecastHTML + `</div>`;
 
   let hourForecastHTML = `<div class="row">`;
@@ -93,11 +92,16 @@ function showForecastConditions(response) {
   `;
     }
   });
-
   hourForecastHTML = hourForecastHTML + `</div>`;
 
   document.querySelector("#week-forecast").innerHTML = weekForecastHTML;
   document.querySelector("#hour-forecast").innerHTML = hourForecastHTML;
+  document.querySelector(
+    ".current-amplitude .min-temp #temperature-value"
+  ).innerHTML = Math.round(weekForecast[0].temp.min);
+  document.querySelector(
+    ".current-amplitude .max-temp #temperature-value"
+  ).innerHTML = Math.round(weekForecast[0].temp.max);
 }
 
 function searchForecastLocation(coordinates) {
@@ -115,13 +119,6 @@ function showSearchConditions(response) {
 
   document.querySelector("#description-value").innerHTML =
     response.data.weather[0].main;
-
-  document.querySelector(
-    ".current-amplitude .min-temp #temperature-value"
-  ).innerHTML = Math.round(response.data.main.temp_min);
-  document.querySelector(
-    ".current-amplitude .max-temp #temperature-value"
-  ).innerHTML = Math.round(response.data.main.temp_max);
 
   document.querySelector("#humidity").innerHTML = Math.round(
     response.data.main.humidity
