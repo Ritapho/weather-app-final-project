@@ -57,7 +57,7 @@ function showForecastConditions(response) {
 
   let weekForecastHTML = `<div class="row">`;
   weekForecast.forEach(function (weekDay, index) {
-    if (index < 7) {
+    if ((index > 0) & (index < 8)) {
       weekForecastHTML =
         weekForecastHTML +
         `<div class="col">
@@ -77,7 +77,7 @@ function showForecastConditions(response) {
 
   let hourForecastHTML = `<div class="row">`;
   hourForecast.forEach(function (hour, index) {
-    if (index < 7) {
+    if ((index > 0) & (index < 8)) {
       hourForecastHTML =
         hourForecastHTML +
         `<div class="col">
@@ -96,12 +96,6 @@ function showForecastConditions(response) {
 
   document.querySelector("#week-forecast").innerHTML = weekForecastHTML;
   document.querySelector("#hour-forecast").innerHTML = hourForecastHTML;
-  document.querySelector(
-    ".current-amplitude .min-temp #temperature-value"
-  ).innerHTML = Math.round(weekForecast[0].temp.min);
-  document.querySelector(
-    ".current-amplitude .max-temp #temperature-value"
-  ).innerHTML = Math.round(weekForecast[0].temp.max);
 }
 
 function searchForecastLocation(coordinates) {
@@ -119,7 +113,12 @@ function showSearchConditions(response) {
 
   document.querySelector("#description-value").innerHTML =
     response.data.weather[0].main;
-
+  document.querySelector(
+    ".current-amplitude .min-temp #temperature-value"
+  ).innerHTML = Math.round(response.data.main.temp_min);
+  document.querySelector(
+    ".current-amplitude .max-temp #temperature-value"
+  ).innerHTML = Math.round(response.data.main.temp_max);
   document.querySelector("#humidity").innerHTML = Math.round(
     response.data.main.humidity
   );
