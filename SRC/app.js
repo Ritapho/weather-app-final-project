@@ -54,6 +54,7 @@ function formatHour(timestamp) {
 function showForecastConditions(response) {
   let weekForecast = response.data.daily;
   let hourForecast = response.data.hourly;
+  let timezoneOffset = response.data.timezone_offset;
 
   let weekForecastHTML = `<div class="row">`;
   weekForecast.forEach(function (weekDay, index) {
@@ -81,7 +82,7 @@ function showForecastConditions(response) {
       hourForecastHTML =
         hourForecastHTML +
         `<div class="col">
-        <div class="day">${formatHour(hour.dt)}</div>
+        <div class="day">${formatHour(hour.dt + timezoneOffset - 3600)}</div>
         <img src="http://openweathermap.org/img/wn/${
           hour.weather[0].icon
         }@2x.png" alt="" width="40"/>
@@ -133,7 +134,7 @@ function showSearchConditions(response) {
   );
 
   document.querySelector("#update-value").innerHTML = formatDate(
-    response.data.dt * 1000
+    (response.data.dt + response.data.timezone - 3600) * 1000
   );
   document
     .querySelector("#icon")
